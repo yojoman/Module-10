@@ -51,43 +51,4 @@ describe("Onliner.by", () => {
     expect(await productPage.priceOfProduct.isDisplayed()).to.equal(true);
     expect(await productPage.productImage.isDisplayed()).to.equal(true);
   });
-
-  it("Should open Discuss on Forum page", async () => {
-    await productPage.clickOnButton("Обсуждение на форуме");
-    await productPage.waitForElementDisplayed(
-      productPage.getForumTitleText("Смартфон Apple iPhone 14")
-    );
-    expect(
-      await productPage
-        .getForumTitleText("Смартфон Apple iPhone 14")
-        .isDisplayed()
-    ).to.equal(true);
-  });
-
-  it("Should open Offers page", async () => {
-    await productPage.back();
-    await productPage.clickOnButton("Предложения продавцов");
-    await productPage.waitForElementDisplayed(
-      productPage.getProductTitleText(
-        "iPhone 14 Pro Max 256GB (космический черный)"
-      )
-    );
-    expect(
-      await productPage
-        .getProductTitleText("iPhone 14 Pro Max 256GB (космический черный)")
-        .isDisplayed()
-    ).to.equal(true);
-  });
-
-  it("Should add item to the bucket by using JSexecutor", async () => {
-    await productPage.scrollAndClickOntoOffer();
-    await productPage.waitForElementDisplayed(
-      productPage.getCartTitleText("Товар добавлен в корзину")
-    );
-    expect(
-      await productPage
-        .getCartTitleText("Товар добавлен в корзину")
-        .isDisplayed()
-    ).to.equal(true);
-  });
-});
+})

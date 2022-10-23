@@ -36,6 +36,7 @@
     "prettier": "2.7.1",
     "selenium-webdriver": "^4.5.0",
     "wdio-chromedriver-service": "^7.3.2",
-    "winston": "^3.8.2"
+    "winston": "^3.8.2",
+    "yargs": "^17.6.0"
   }
 }
