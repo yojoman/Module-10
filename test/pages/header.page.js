@@ -1,9 +1,26 @@
-const BasePage = require("./base.page");
 const logger = require("../config/logger.config");
 
-class SearchPage extends BasePage {
+class Header {
+  get headerMenu() {
+    return $$('.//span[contains(@class,"b-main-navigation__text")]');
+  }
+
+  get footerMenu() {
+    return $$('.//a[contains(@class,"footer-style__link footer-style__link")]');
+  }
+
   get searchInputField() {
     return $(".//input[@class='fast-search__input']");
+  }
+
+  getHeaderMenuText() {
+    const elements = this.headerMenu.map((element) => element.getText());
+    return elements;
+  }
+
+  getFooterMenuText() {
+    const elements = this.footerMenu.map((element) => element.getText());
+    return elements;
   }
 
   getItemFromSearchField(number) {
@@ -26,4 +43,4 @@ class SearchPage extends BasePage {
   }
 }
 
-module.exports = new SearchPage();
+module.exports = Header;

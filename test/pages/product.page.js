@@ -1,7 +1,13 @@
 const BasePage = require("./base.page.js");
+const Header = require("./header.page.js");
 const logger = require("../config/logger.config");
 
 class ProductPage extends BasePage {
+  constructor() {
+    super();
+    this.Header = new Header();
+  }
+
   getProductButton(buttonName) {
     return $(`.//span[text()='${buttonName}']`);
   }
@@ -54,7 +60,7 @@ class ProductPage extends BasePage {
     ]);
   }
 
-  async scrollAndClickOntoOffer() {
+  async scrollAndClickOnOffer() {
     logger.info(`Scrolling and clicking on the first offer`);
     await browser.execute(function () {
       document

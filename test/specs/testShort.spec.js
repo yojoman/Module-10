@@ -1,10 +1,9 @@
 const mainPage = require("../pages/main.page");
 const productPage = require("../pages/product.page");
-const searchPage = require("../pages/search.page");
 const resources = require("../resources/data.js");
 const { expect, assert } = require("chai");
 
-describe("Onliner.by", () => {
+describe("Onliner.by short", () => {
   before(async () => {
     await browser.maximizeWindow();
   });
@@ -15,7 +14,7 @@ describe("Onliner.by", () => {
   });
 
   it("Main page should contain correct header info", async () => {
-    const headerActualValue = await mainPage.getHeaderMenuText();
+    const headerActualValue = await mainPage.Header.getHeaderMenuText();
     assert.sameMembers(
       resources.headerExpectedValue,
       headerActualValue,
@@ -24,7 +23,7 @@ describe("Onliner.by", () => {
   });
 
   it("Main page should contain correct footer info", async () => {
-    const footerActualValue = await mainPage.getFooterMenuText();
+    const footerActualValue = await mainPage.Header.getFooterMenuText();
     assert.sameMembers(
       resources.footerExpectedValue,
       footerActualValue,
@@ -33,11 +32,11 @@ describe("Onliner.by", () => {
   });
 
   it("Should open searched item page", async () => {
-    await searchPage.typeInSearhField(
+    await mainPage.Header.typeInSearhField(
       "iPhone 14 Pro Max 256GB (космический черный)"
     );
-    await searchPage.openItemFromSearchField(1);
-    expect(await searchPage.getTitle()).to.include(
+    await mainPage.Header.openItemFromSearchField(1);
+    expect(await productPage.getTitle()).to.include(
       "iPhone 14 Pro Max 256GB (космический черный)"
     );
   });
@@ -51,4 +50,4 @@ describe("Onliner.by", () => {
     expect(await productPage.priceOfProduct.isDisplayed()).to.equal(true);
     expect(await productPage.productImage.isDisplayed()).to.equal(true);
   });
-})
+});
